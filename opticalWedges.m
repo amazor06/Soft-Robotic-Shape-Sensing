@@ -1,20 +1,8 @@
 function opticalWedgeApp()
-% OPTICALWEDGEAPP  (performance-optimised)
-% Key changes vs original:
-%   - segmentLengthInsideSolid replaced with analytic slab intersection
-%     (eliminates 180-sample Monte-Carlo loop per ray entirely)
-%   - runDetectorSimulation fully vectorised - no inner loops
-%   - Sensitivity finite-differences use a tiny dedicated scalar fast-path
-%     (no ray struct allocation, much smaller density)
-%   - Ray drawing batched into single plot3 call with NaN separators
-%   - Static geometry (LED, detectors, axes labels) drawn once and cached;
-%     only wedge patches and ray lines are updated on each redraw
-%   - drawnow limitrate throttles repaints during slider drag
 
     close all force;
     clc;
 
-    % ------------------------------------------------------------------
     % Initial state
     % ------------------------------------------------------------------
     state.shiftZ      = 0.00;

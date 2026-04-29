@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\geometry{margin=1in}
+
+\begin{document}
+
+\title{Relating Light Attenuation to Distance and Geometry}
+\author{}
+\date{}
+\maketitle
+
+\section*{Introduction}
+
+The Beer--Lambert Law describes how the intensity of light decreases as it travels through an absorbing medium. As light propagates through the material, its intensity attenuates exponentially with the distance traveled. In this setup, we first solve for the distance \(d\) traveled by the light, then relate that distance to the geometry of a right triangle.
+
+\section*{Beer--Lambert Law}
+
+\begin{equation}
+I = I_0 e^{-\alpha d}
+\end{equation}
+
+where:
+\begin{align*}
+I   &= \text{transmitted intensity}, \\
+I_0 &= \text{initial intensity}, \\
+\alpha &= \text{absorption coefficient of the material}, \\
+d   &= \text{distance traveled through the medium}.
+\end{align*}
+
+\section*{Solving for Distance \(d\)}
+
+Starting with:
+
+\begin{equation}
+I = I_0 e^{-\alpha d}
+\end{equation}
+
+Divide both sides by \(I_0\):
+
+\begin{equation}
+\frac{I}{I_0} = e^{-\alpha d}
+\end{equation}
+
+Take the natural logarithm of both sides:
+
+\begin{equation}
+\ln\left(\frac{I}{I_0}\right) = \ln\left(e^{-\alpha d}\right)
+\end{equation}
+
+Using \(\ln(e^x)=x\):
+
+\begin{equation}
+\ln\left(\frac{I}{I_0}\right) = -\alpha d
+\end{equation}
+
+Solve for \(d\):
+
+\begin{equation}
+d = -\frac{1}{\alpha}\ln\left(\frac{I}{I_0}\right)
+\end{equation}
+
+Equivalently:
+
+\begin{equation}
+d = \frac{1}{\alpha}\ln\left(\frac{I_0}{I}\right)
+\end{equation}
+
+\section*{Relating Distance to Triangle Geometry}
+
+Now suppose the light path or wedge geometry forms a right triangle. Let:
+
+\begin{align*}
+d &= \text{vertical distance or thickness}, \\
+A &= \text{horizontal distance along the base}, \\
+\theta &= \text{angle of the wedge}.
+\end{align*}
+
+Using the tangent relationship:
+
+\begin{equation}
+\tan(\theta) = \frac{d}{A}
+\end{equation}
+
+We solve for \(A\). First multiply both sides by \(A\):
+
+\begin{equation}
+A\tan(\theta) = d
+\end{equation}
+
+Then divide both sides by \(\tan(\theta)\):
+
+\begin{equation}
+A = \frac{d}{\tan(\theta)}
+\end{equation}
+
+Substituting the Beer--Lambert expression for \(d\):
+
+\begin{equation}
+A = \frac{1}{\alpha \tan(\theta)}
+\ln\left(\frac{I_0}{I}\right)
+\end{equation}
+
+\section*{Final Expression}
+
+\begin{equation}
+\boxed{
+A = \frac{1}{\alpha \tan(\theta)}
+\ln\left(\frac{I_0}{I}\right)
+}
+\end{equation}
+
+This expression relates the measured light intensity to the horizontal position \(A\) in the wedge geometry. As the light travels through a thicker region of the material, the transmitted intensity decreases, allowing the distance and position to be inferred from the attenuation.
+
+\section*{Including a Figure}
+
+To include a figure, first add this package at the top:
+
+\begin{verbatim}
+\usepackage{graphicx}
+\end{verbatim}
+
+Then place your image file, for example \texttt{triangle.png}, in the same folder as your \texttt{.tex} file.
+
+Use this code where you want the figure to appear:
+
+\begin{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\textwidth]{triangle.png}
+    \caption{Right-triangle wedge geometry relating thickness \(d\), base distance \(A\), and angle \(\theta\).}
+    \label{fig:wedge_geometry}
+\end{figure}
+\end{verbatim}
+
+\end{document}
